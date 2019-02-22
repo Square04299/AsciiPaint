@@ -15,7 +15,7 @@ public class Circle extends ColoredShape {
     
     private Point center;
     private double raduis;
-
+    
     public Circle(Point center, double raduis, char color) {
         super(color);
         if (center == null) {
@@ -26,7 +26,7 @@ public class Circle extends ColoredShape {
     }
     
     public Circle(Point cercle, double raduis) {
-        this(new Point(), raduis, '#');
+        this(cercle, raduis, '#');
     }
     
     public Circle() {
@@ -43,19 +43,19 @@ public class Circle extends ColoredShape {
 
     @Override
     public boolean isInside(Point p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return (this.center.distanceTo(p) < this.raduis);
     }
 
     @Override
     public void move(double dx, double dy) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        center.move(dx, dy);
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 41 * hash + Objects.hashCode(this.center);
-        hash = 41 * hash + (int) (Double.doubleToLongBits(this.raduis) ^ (Double.doubleToLongBits(this.raduis) >>> 32));
+        int hash = 5;
+        hash = 97 * hash + Objects.hashCode(this.center);
+        hash = 97 * hash + (int) (Double.doubleToLongBits(this.raduis) ^ (Double.doubleToLongBits(this.raduis) >>> 32));
         return hash;
     }
 
@@ -79,6 +79,8 @@ public class Circle extends ColoredShape {
         }
         return true;
     }
+
+    
     
     
     

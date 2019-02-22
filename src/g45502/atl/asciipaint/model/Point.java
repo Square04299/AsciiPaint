@@ -9,7 +9,7 @@ import static java.lang.Math.*;
 public class Point {
     private double x;
     private double y;
-
+    
     public Point(){
         this(0,0);
     }
@@ -19,6 +19,9 @@ public class Point {
     }
     
     public Point(Point p){
+        if(p == null){
+            throw new NullPointerException();
+        }
         this.x = p.x;
         this.y = p.y;
     }
@@ -32,8 +35,8 @@ public class Point {
     }
     
     void move(double dx, double dy){
-        x += dx;
-        y += dy;
+        this.x += dx;
+        this.y += dy;
     }
     
     double distanceTo(Point other){

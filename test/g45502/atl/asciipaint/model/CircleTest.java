@@ -16,6 +16,48 @@ public class CircleTest {
     
     public CircleTest() {
     }
+    
+    /**
+     * Test of constructor method, of class Circle.
+     */
+    @Test
+    public void testCircle() {
+        System.out.println("Circle");
+        Circle c = new Circle();
+        Circle expected = new Circle(new Point(), 0, '#');
+        assertEquals(expected, c);
+    }
+    
+    /**
+     * Test of constructor method, of class Circle.
+     */
+    @Test
+    public void testCircleColor() {
+        System.out.println("CircleColor");
+        Circle c = new Circle(new Point(),0);
+        Circle expected = new Circle(new Point(), 0, '#');
+        assertEquals(expected, c);
+    }
+    
+    /**
+     * Test of constructor method, of class Rectangle.
+     */
+    @Test
+    public void testCircleParametre() {
+        System.out.println("CircleParametre");
+        Circle c = new Circle(new Point(), 0, '@');
+        Circle expected = new Circle(new Point(), 0 , '@');
+        assertEquals(expected, c);
+    }
+    
+    /**
+     * Test of constructor method, of class Circle.
+     */
+    @Test(expected = NullPointerException.class)
+    public void testCircleNull() {
+        System.out.println("CircleNull");
+        Circle c = new Circle(null, 0, '#');
+    }
 
     /**
      * Test of getCenter method, of class Circle.
@@ -45,17 +87,26 @@ public class CircleTest {
      * Test of isInside method, of class Circle.
      */
     @Test
-    public void testIsInside() {
-        System.out.println("isInside");
-        /*
-        Point and circle need to finish the test
-        */
-        Point p = new Point();
-        Circle instance = new Circle(new Point(), 0, '#');
+    public void testIsInsideIn() {
+        System.out.println("isInsideIn");
+        Point p = new Point(2,2);
+        Circle instance = new Circle(new Point(1,1), 3, '#');
+        boolean expResult = true;
+        boolean result = instance.isInside(p);
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of isInside method, of class Circle.
+     */
+    @Test
+    public void testIsInsideOut() {
+        System.out.println("isInsideOut");
+        Point p = new Point(4,1);
+        Circle instance = new Circle(new Point(1,1), 3, '#');
         boolean expResult = false;
         boolean result = instance.isInside(p);
         assertEquals(expResult, result);
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -64,11 +115,10 @@ public class CircleTest {
     @Test
     public void testMove() {
         System.out.println("move");
-        double dx = 0.0;
-        double dy = 0.0;
-        Circle instance = new Circle();
-        instance.move(dx, dy);
-        fail("The test case is a prototype.");
+        Circle c = new Circle(new Point(2,2), 3);
+        c.move(1, 1);
+        Circle expected = new Circle(new Point(3,3), 3);
+        assertEquals(expected, c);
     }
 
     /**
@@ -80,8 +130,7 @@ public class CircleTest {
         Circle instance = new Circle();
         int expResult = 0;
         int result = instance.hashCode();
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+        assertFalse(expResult == result);
     }
 
     /**
@@ -90,12 +139,11 @@ public class CircleTest {
     @Test
     public void testEquals() {
         System.out.println("equals");
-        Object obj = null;
+        Object obj = new Circle();
         Circle instance = new Circle();
-        boolean expResult = false;
+        boolean expResult = true;
         boolean result = instance.equals(obj);
         assertEquals(expResult, result);
-        fail("The test case is a prototype.");
     }
     
 }

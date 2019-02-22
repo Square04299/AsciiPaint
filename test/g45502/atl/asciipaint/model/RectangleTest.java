@@ -59,10 +59,24 @@ public class RectangleTest {
      * Test of isInside method, of class Rectangle.
      */
     @Test
-    public void testIsInside() {
-        Rectangle rc = new Rectangle(new Point(1,3), 4, 2);
-        Point p = new Point(2,2);
+    public void testIsInsideIn() {
+        System.out.println("isInsideIn");
+        Rectangle rc = new Rectangle(new Point(2,2), 4, 3);
+        Point p = new Point(3,0);
         assertTrue(rc.isInside(p));
+    }
+    
+    /**
+     * Test of isInside method, of class Rectangle.
+     */
+    @Test
+    public void testIsInsideOut() {
+        System.out.println("isInsideOut");
+        Rectangle rcs = new Rectangle(new Point(2,2), 4, 3);
+        //Point p1 = new Point(1,1);
+        //Probleme avec 
+        Point p1 = new Point();
+        assertFalse(rcs.isInside(p1));
     }
 
     /**
@@ -130,11 +144,23 @@ public class RectangleTest {
     @Test
     public void testEquals() {
         System.out.println("equals");
-        Object obj = null;
+        Object obj = new Rectangle();
         Rectangle instance = new Rectangle();
-        boolean expResult = false;
+        boolean expResult = true;
         boolean result = instance.equals(obj);
         assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of hashCode method, of class Rectangle.
+     */
+    @Test
+    public void testHashCode() {
+        System.out.println("hashCode");
+        Rectangle instance = new Rectangle();
+        int expResult = 0;
+        int result = instance.hashCode();
+        assertFalse(expResult == result);
     }
     
 }

@@ -11,63 +11,73 @@ public class Point {
     private double y;
 
     public Point(){
-<span class="nc" id="L14">        this(0,0);</span>
-<span class="nc" id="L15">    }</span>
+<span class="fc" id="L14">        this(0,0);</span>
+<span class="fc" id="L15">    }</span>
 <span class="fc" id="L16">    public Point(double x, double y) {</span>
 <span class="fc" id="L17">        this.x = x;</span>
 <span class="fc" id="L18">        this.y = y;</span>
 <span class="fc" id="L19">    }</span>
     
-<span class="nc" id="L21">    public Point(Point p){</span>
-<span class="nc" id="L22">        this.x = p.x;</span>
-<span class="nc" id="L23">        this.y = p.y;</span>
-<span class="nc" id="L24">    }</span>
+<span class="fc" id="L21">    public Point(Point p){</span>
+<span class="pc bpc" id="L22" title="1 of 2 branches missed.">        if(p == null){</span>
+<span class="nc" id="L23">            throw new NullPointerException();</span>
+        }
+<span class="fc" id="L25">        this.x = p.x;</span>
+<span class="fc" id="L26">        this.y = p.y;</span>
+<span class="fc" id="L27">    }</span>
 
     public double getX() {
-<span class="nc" id="L27">        return x;</span>
+<span class="fc" id="L30">        return x;</span>
     }
 
     public double getY() {
-<span class="nc" id="L31">        return y;</span>
+<span class="fc" id="L34">        return y;</span>
     }
     
     void move(double dx, double dy){
-<span class="fc" id="L35">        x += dx;</span>
-<span class="fc" id="L36">        y += dy;</span>
-<span class="fc" id="L37">    }</span>
+<span class="fc" id="L38">        this.x += dx;</span>
+<span class="fc" id="L39">        this.y += dy;</span>
+<span class="fc" id="L40">    }</span>
     
     double distanceTo(Point other){
-<span class="fc bfc" id="L40" title="All 2 branches covered.">        if (other == null) {</span>
-<span class="fc" id="L41">            throw new NullPointerException(&quot;The point given is null&quot;);</span>
+<span class="fc bfc" id="L43" title="All 2 branches covered.">        if (other == null) {</span>
+<span class="fc" id="L44">            throw new NullPointerException(&quot;The point given is null&quot;);</span>
         }
-<span class="fc" id="L43">        return hypot(this.x - other.x, this.y - other.y);</span>
+<span class="fc" id="L46">        return hypot(this.x - other.x, this.y - other.y);</span>
     }
 
     @Override
+    public String toString() {
+<span class="fc" id="L51">        return &quot;{ &quot;+x+ &quot; , &quot; +y+ &quot; }&quot;;</span>
+    }
+    
+    
+
+    @Override
     public int hashCode() {
-<span class="nc" id="L48">        int hash = 3;</span>
-<span class="nc" id="L49">        return hash;</span>
+<span class="fc" id="L58">        int hash = 3;</span>
+<span class="fc" id="L59">        return hash;</span>
     }
 
     @Override
     public boolean equals(Object obj) {
-<span class="pc bpc" id="L54" title="1 of 2 branches missed.">        if (this == obj) {</span>
-<span class="nc" id="L55">            return true;</span>
+<span class="pc bpc" id="L64" title="1 of 2 branches missed.">        if (this == obj) {</span>
+<span class="nc" id="L65">            return true;</span>
         }
-<span class="pc bpc" id="L57" title="1 of 2 branches missed.">        if (obj == null) {</span>
-<span class="nc" id="L58">            return false;</span>
-        }
-<span class="pc bpc" id="L60" title="1 of 2 branches missed.">        if (getClass() != obj.getClass()) {</span>
-<span class="nc" id="L61">            return false;</span>
-        }
-<span class="fc" id="L63">        final Point other = (Point) obj;</span>
-<span class="pc bpc" id="L64" title="1 of 2 branches missed.">        if (Double.doubleToLongBits(this.x) != Double.doubleToLongBits(other.x)) {</span>
-<span class="nc" id="L65">            return false;</span>
-        }
-<span class="pc bpc" id="L67" title="1 of 2 branches missed.">        if (Double.doubleToLongBits(this.y) != Double.doubleToLongBits(other.y)) {</span>
+<span class="pc bpc" id="L67" title="1 of 2 branches missed.">        if (obj == null) {</span>
 <span class="nc" id="L68">            return false;</span>
         }
-<span class="fc" id="L70">        return true;</span>
+<span class="pc bpc" id="L70" title="1 of 2 branches missed.">        if (getClass() != obj.getClass()) {</span>
+<span class="nc" id="L71">            return false;</span>
+        }
+<span class="fc" id="L73">        final Point other = (Point) obj;</span>
+<span class="fc bfc" id="L74" title="All 2 branches covered.">        if (Double.doubleToLongBits(this.x) != Double.doubleToLongBits(other.x)) {</span>
+<span class="fc" id="L75">            return false;</span>
+        }
+<span class="pc bpc" id="L77" title="1 of 2 branches missed.">        if (Double.doubleToLongBits(this.y) != Double.doubleToLongBits(other.y)) {</span>
+<span class="nc" id="L78">            return false;</span>
+        }
+<span class="fc" id="L80">        return true;</span>
     }
     
     
