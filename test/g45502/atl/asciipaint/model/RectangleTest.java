@@ -73,7 +73,7 @@ public class RectangleTest {
         Rectangle rc = new Rectangle(new Point(1,3), 4, 2);
         rc.move(1,1);
         Rectangle expected = new Rectangle(new Point(2,4), 4, 2);
-        assertEquals(expected, rc);
+        assertFalse(rc == expected);
     }
 
     /**

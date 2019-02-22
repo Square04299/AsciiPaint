@@ -65,7 +65,7 @@ public class Rectangle extends ColoredShape {
 
     @Override
     public void move(double dx, double dy) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        upperleft.move(dx, dy);
     }
 
     @Override
