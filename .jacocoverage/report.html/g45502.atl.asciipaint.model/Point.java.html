@@ -9,7 +9,7 @@ import static java.lang.Math.*;
 public class Point {
     private double x;
     private double y;
-
+    
     public Point(){
 <span class="fc" id="L14">        this(0,0);</span>
 <span class="fc" id="L15">    }</span>
@@ -71,8 +71,8 @@ public class Point {
 <span class="nc" id="L71">            return false;</span>
         }
 <span class="fc" id="L73">        final Point other = (Point) obj;</span>
-<span class="fc bfc" id="L74" title="All 2 branches covered.">        if (Double.doubleToLongBits(this.x) != Double.doubleToLongBits(other.x)) {</span>
-<span class="fc" id="L75">            return false;</span>
+<span class="pc bpc" id="L74" title="1 of 2 branches missed.">        if (Double.doubleToLongBits(this.x) != Double.doubleToLongBits(other.x)) {</span>
+<span class="nc" id="L75">            return false;</span>
         }
 <span class="pc bpc" id="L77" title="1 of 2 branches missed.">        if (Double.doubleToLongBits(this.y) != Double.doubleToLongBits(other.y)) {</span>
 <span class="nc" id="L78">            return false;</span>

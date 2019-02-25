@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>View.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;AsciiPaint&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">g45502.atl.asciipaint.model</a> &gt; <span class="el_source">View.java</span></div><h1>View.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package g45502.atl.asciipaint.model;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+/**
+ *
+ * @author G45502
+ */
+public class View {
+
+    private final Scanner in;
+    private final AsciiPaint asciiPaint;
+
+    /**
+     * create a view with an asciipaint.
+     *
+     * @param asciiPaint The asciipaint.
+     */
+<span class="nc" id="L25">    public View(AsciiPaint asciiPaint) {</span>
+<span class="nc" id="L26">        in = new Scanner(System.in);</span>
+<span class="nc" id="L27">        this.asciiPaint = asciiPaint;</span>
+<span class="nc" id="L28">    }</span>
+
+    /**
+     * Define the size of the drawing.
+     *
+     * @return An asciipaint.
+     */
+    public AsciiPaint defineSizeDrawing() {
+        String[] answer;
+        Boolean badAnswer;
+<span class="nc" id="L38">        int numParam = 2;</span>
+<span class="nc" id="L39">        int width = 0, height = 0;</span>
+        do {
+<span class="nc" id="L41">            System.out.println(&quot;Put width and height size for your draw [10 20]: &quot;);</span>
+<span class="nc" id="L42">            answer = in.nextLine().split(&quot; &quot;);</span>
+<span class="nc bnc" id="L43" title="All 2 branches missed.">            badAnswer = answer.length != numParam;</span>
+<span class="nc bnc" id="L44" title="All 2 branches missed.">            if (!badAnswer) {</span>
+                try {
+<span class="nc" id="L46">                    width = Integer.parseInt(answer[0]);</span>
+<span class="nc" id="L47">                    height = Integer.parseInt(answer[1]);</span>
+<span class="nc" id="L48">                } catch (NumberFormatException e) {</span>
+<span class="nc" id="L49">                    badAnswer = true;</span>
+<span class="nc" id="L50">                    System.out.println(&quot;You need to put 2 integer.&quot;</span>
+<span class="nc" id="L51">                            + Arrays.toString(answer));</span>
+<span class="nc" id="L52">                }</span>
+            }
+<span class="nc bnc" id="L54" title="All 2 branches missed.">        } while (badAnswer);</span>
+<span class="nc" id="L55">        return new AsciiPaint(width, height);</span>
+    }
+
+    /**
+     * Show asciipaint with shapes.
+     */
+    public void show() {
+<span class="nc bnc" id="L62" title="All 2 branches missed.">        for (int i = 0; i &lt; asciiPaint.getHeight(); i++) {</span>
+<span class="nc bnc" id="L63" title="All 2 branches missed.">            for (int j = 0; j &lt; asciiPaint.getWidth(); j++) {</span>
+                try {
+<span class="nc" id="L65">                    System.out.print(asciiPaint.getColorAt(j, i));</span>
+<span class="nc" id="L66">                } catch (IllegalArgumentException e) {</span>
+<span class="nc" id="L67">                    System.out.print(&quot;-&quot;);</span>
+<span class="nc" id="L68">                }</span>
+            }
+<span class="nc" id="L70">            System.out.print(&quot;\n&quot;);</span>
+        }
+<span class="nc" id="L72">    }</span>
+
+    /**
+     * Show all commands
+     */
+    public void introduce() {
+<span class="nc" id="L78">        System.out.println(&quot;|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|&quot;);</span>
+<span class="nc" id="L79">        System.out.println(&quot;|   You can add, move, delete shapes,    |&quot;);</span>
+<span class="nc" id="L80">        System.out.println(&quot;|  display drawing and stop the program  |&quot;);</span>
+<span class="nc" id="L81">        System.out.println(&quot;|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|&quot;);</span>
+<span class="nc" id="L82">        System.out.println(&quot;| add rectangle x y width height color   |&quot;);</span>
+<span class="nc" id="L83">        System.out.println(&quot;| add circle x y radius color            |&quot;);</span>
+<span class="nc" id="L84">        System.out.println(&quot;| add square x y side color              |&quot;);</span>
+<span class="nc" id="L85">        System.out.println(&quot;| show                                   |&quot;);</span>
+<span class="nc" id="L86">        System.out.println(&quot;| stop                                   |&quot;);</span>
+<span class="nc" id="L87">        System.out.println(&quot;| clear                                  |&quot;);</span>
+<span class="nc" id="L88">        System.out.println(&quot;| delete x y                             |&quot;);</span>
+<span class="nc" id="L89">        System.out.println(&quot;| move x y                               |&quot;);</span>
+<span class="nc" id="L90">        System.out.println(&quot;| help                                   |&quot;);</span>
+<span class="nc" id="L91">        System.out.println(&quot;|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|&quot;);</span>
+<span class="nc" id="L92">    }</span>
+
+    /**
+     * Test parameter for square and circle.
+     *
+     * @param answer The command.
+     * @return The command with checked parameters.
+     */
+    public String[] addSquareOrCircle(String[] answer) {
+        Boolean badAnswer;
+<span class="nc" id="L102">        int numParam = 6;</span>
+        do {
+<span class="nc bnc" id="L104" title="All 2 branches missed.">            badAnswer = (answer.length != numParam);</span>
+<span class="nc bnc" id="L105" title="All 2 branches missed.">            if (!badAnswer) {</span>
+                try {
+<span class="nc" id="L107">                    Integer.parseInt(answer[2]);</span>
+<span class="nc" id="L108">                    Integer.parseInt(answer[3]);</span>
+<span class="nc" id="L109">                    Integer.parseInt(answer[4]);</span>
+<span class="nc" id="L110">                    char charAt = answer[5].charAt(0);</span>
+<span class="nc" id="L111">                } catch (NumberFormatException e) {</span>
+<span class="nc" id="L112">                    badAnswer = true;</span>
+<span class="nc" id="L113">                    System.out.println(&quot;You need to put 3 integer and 1 char.&quot;</span>
+<span class="nc" id="L114">                            + Arrays.toString(answer));</span>
+<span class="nc" id="L115">                }</span>
+            } else {
+<span class="nc" id="L117">                System.out.println(&quot;Bad parameter. &quot;</span>
+                        + &quot;Put x y side/radius and color. [2 3 1 s] : &quot;);
+<span class="nc" id="L119">                answer = in.nextLine().split(&quot; &quot;);</span>
+<span class="nc" id="L120">                answer[answer.length - 1] = answer[3];</span>
+<span class="nc" id="L121">                answer[answer.length - 2] = answer[2];</span>
+<span class="nc" id="L122">                answer[answer.length - 3] = answer[1];</span>
+<span class="nc" id="L123">                answer[answer.length - 4] = answer[0];</span>
+            }
+<span class="nc bnc" id="L125" title="All 2 branches missed.">        } while (badAnswer);</span>
+<span class="nc" id="L126">        return answer;</span>
+    }
+
+    /**
+     * Add a square into an asciipaint.
+     *
+     * @param command The command to add square.
+     */
+    public void addSquare(String[] command) {
+<span class="nc" id="L135">        String[] answer = addSquareOrCircle(command);</span>
+<span class="nc" id="L136">        asciiPaint.newSquare(Integer.parseInt(answer[2]),</span>
+<span class="nc" id="L137">                Integer.parseInt(answer[3]),</span>
+<span class="nc" id="L138">                Integer.parseInt(answer[4]),</span>
+<span class="nc" id="L139">                answer[5].charAt(0));</span>
+<span class="nc" id="L140">        System.out.println(&quot;The square has been added.&quot;);</span>
+
+<span class="nc" id="L142">    }</span>
+
+    /**
+     * Add a circle into an asciipaint.
+     *
+     * @param command The command to add circle.
+     */
+    public void addCircle(String[] command) {
+<span class="nc" id="L150">        String[] answer = addSquareOrCircle(command);</span>
+<span class="nc" id="L151">        asciiPaint.newCircle(Integer.parseInt(answer[2]),</span>
+<span class="nc" id="L152">                Integer.parseInt(answer[3]),</span>
+<span class="nc" id="L153">                Integer.parseInt(answer[4]),</span>
+<span class="nc" id="L154">                answer[5].charAt(0));</span>
+<span class="nc" id="L155">        System.out.println(&quot;The circle has been added.&quot;);</span>
+<span class="nc" id="L156">    }</span>
+
+    /**
+     * Add a rectangle into an asciipaint.
+     *
+     * @param command The command to add rectangle.
+     */
+    public void addRectangle(String[] answer) {
+<span class="nc" id="L164">        int numParam = 7, x = 0, y = 0, width = 0, height = 0;</span>
+        Boolean badAnswer;
+<span class="nc" id="L166">        char color = '-';</span>
+        do {
+<span class="nc bnc" id="L168" title="All 2 branches missed.">            badAnswer = (answer.length != numParam);</span>
+<span class="nc bnc" id="L169" title="All 2 branches missed.">            if (!badAnswer) {</span>
+                try {
+<span class="nc" id="L171">                    x = Integer.parseInt(answer[2]);</span>
+<span class="nc" id="L172">                    y = Integer.parseInt(answer[3]);</span>
+<span class="nc" id="L173">                    width = Integer.parseInt(answer[4]);</span>
+<span class="nc" id="L174">                    height = Integer.parseInt(answer[5]);</span>
+<span class="nc" id="L175">                    color = answer[6].charAt(0);</span>
+<span class="nc" id="L176">                } catch (NumberFormatException e) {</span>
+<span class="nc" id="L177">                    badAnswer = true;</span>
+<span class="nc" id="L178">                    System.out.println(&quot;You need to put 4 integer and 1 char.&quot;</span>
+<span class="nc" id="L179">                            + Arrays.toString(answer));</span>
+<span class="nc" id="L180">                }</span>
+            } else {
+<span class="nc" id="L182">                System.out.println(&quot;Put x y width height and color. [2 3 1 4 r] : &quot;);</span>
+<span class="nc" id="L183">                answer = in.nextLine().split(&quot; &quot;);</span>
+<span class="nc" id="L184">                answer[answer.length - 1] = answer[4];</span>
+<span class="nc" id="L185">                answer[answer.length - 2] = answer[3];</span>
+<span class="nc" id="L186">                answer[answer.length - 3] = answer[2];</span>
+<span class="nc" id="L187">                answer[answer.length - 4] = answer[1];</span>
+<span class="nc" id="L188">                answer[answer.length - 6] = answer[0];</span>
+            }
+<span class="nc bnc" id="L190" title="All 2 branches missed.">        } while (badAnswer);</span>
+<span class="nc" id="L191">        asciiPaint.newRectangle(x, y, width, height, color);</span>
+<span class="nc" id="L192">        System.out.println(&quot;The rectangle has been added.&quot;);</span>
+<span class="nc" id="L193">    }</span>
+
+    /**
+     * Process commands.
+     */
+    public void insertCommand() {
+<span class="nc" id="L199">        Boolean stop = false;</span>
+<span class="nc" id="L200">        String[] command = new String[7];</span>
+        do {
+<span class="nc" id="L202">            System.out.println(&quot;Insert command : &quot;);</span>
+<span class="nc" id="L203">            command = in.nextLine().split(&quot; &quot;);</span>
+<span class="nc bnc" id="L204" title="All 22 branches missed.">            switch (command[0].toLowerCase()) {</span>
+                case &quot;add&quot;:
+<span class="nc" id="L206">                    addShape(command);</span>
+<span class="nc" id="L207">                    break;</span>
+                case &quot;stop&quot;:
+<span class="nc" id="L209">                    stop = true;</span>
+<span class="nc" id="L210">                    break;</span>
+                case &quot;show&quot;:
+<span class="nc" id="L212">                    show();</span>
+<span class="nc" id="L213">                    break;</span>
+                case &quot;help&quot;:
+<span class="nc" id="L215">                    introduce();</span>
+<span class="nc" id="L216">                    break;</span>
+                case &quot;clear&quot;:
+<span class="nc" id="L218">                    resetAscii();</span>
+                    break;
+            }
+<span class="nc bnc" id="L221" title="All 2 branches missed.">        } while (!stop);</span>
+
+<span class="nc" id="L223">    }</span>
+
+    /**
+     * Add shapes into asciipaint.
+     *
+     * @param command The command.
+     */
+    private void addShape(String[] command) {
+<span class="nc bnc" id="L231" title="All 14 branches missed.">        switch (command[1].toLowerCase()) {</span>
+            case &quot;rectangle&quot;:
+<span class="nc" id="L233">                addRectangle(command);</span>
+<span class="nc" id="L234">                break;</span>
+            case &quot;square&quot;:
+<span class="nc" id="L236">                addSquare(command);</span>
+<span class="nc" id="L237">                break;</span>
+            case &quot;circle&quot;:
+<span class="nc" id="L239">                addCircle(command);</span>
+                break;
+        }
+<span class="nc" id="L242">    }</span>
+
+    /**
+     * Clear all shapes of the asciipaint.
+     */
+    public void resetAscii() {
+<span class="nc bnc" id="L248" title="All 2 branches missed.">        for (int i = 0; i &lt; asciiPaint.getHeight(); i++) {</span>
+<span class="nc bnc" id="L249" title="All 2 branches missed.">            for (int j = 0; j &lt; asciiPaint.getWidth(); j++) {</span>
+                try {
+<span class="nc" id="L251">                    asciiPaint.removeShapeAt(i, j);</span>
+<span class="nc" id="L252">                } catch (IllegalArgumentException e) {</span>
+<span class="nc" id="L253">                }</span>
+            }
+        }
+<span class="nc" id="L256">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>
