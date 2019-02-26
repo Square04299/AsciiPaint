@@ -5,19 +5,23 @@
  * @author G45502
  */
 public abstract class ColoredShape implements Shape{
-    private char color;
+    private final char color;
+    
+    /**
+     *Builder of ColoredShape
+     * @param color asci character
+     */
+<span class="fc" id="L14">    public ColoredShape(char color) {</span>
+<span class="fc" id="L15">        this.color = color;</span>
+<span class="fc" id="L16">    }</span>
 
-<span class="fc" id="L10">    public ColoredShape(char color) {</span>
-<span class="fc" id="L11">        this.color = color;</span>
-<span class="fc" id="L12">    }</span>
-
+    /**
+     *getter of color
+     * @return the character
+     */
     @Override
     public char getColor() {
-<span class="fc" id="L16">        return color;</span>
+<span class="fc" id="L24">        return color;</span>
     }
-
-    public void setColor(char color) {
-<span class="nc" id="L20">        this.color = color;</span>
-<span class="nc" id="L21">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

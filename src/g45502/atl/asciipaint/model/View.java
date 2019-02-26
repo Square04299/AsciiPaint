@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package g45502.atl.asciipaint.model;
 
 import java.util.Arrays;
@@ -29,7 +24,6 @@ public class View {
 
     /**
      * Define the size of the drawing.
-     *
      * @return An asciipaint.
      */
     public AsciiPaint defineSizeDrawing() {
@@ -38,7 +32,7 @@ public class View {
         int numParam = 2;
         int width = 0, height = 0;
         do {
-            System.out.println("Put width and height size for your draw [10 20]: ");
+            System.out.println("Put height and width size for your draw [10 20]: ");
             answer = in.nextLine().split(" ");
             badAnswer = answer.length != numParam;
             if (!badAnswer) {
@@ -75,25 +69,22 @@ public class View {
      * Show all commands
      */
     public void introduce() {
-        System.out.println("|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|");
-        System.out.println("|   You can add, move, delete shapes,    |");
-        System.out.println("|  display drawing and stop the program  |");
-        System.out.println("|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|");
-        System.out.println("| add rectangle x y width height color   |");
-        System.out.println("| add circle x y radius color            |");
-        System.out.println("| add square x y side color              |");
-        System.out.println("| show                                   |");
-        System.out.println("| stop                                   |");
-        System.out.println("| clear                                  |");
-        System.out.println("| delete x y                             |");
-        System.out.println("| move x y                               |");
-        System.out.println("| help                                   |");
-        System.out.println("|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|");
+        System.out.println("##########################################");
+        System.out.println("#          You can add, move             #");
+        System.out.println("#  display drawing and stop the program  #");
+        System.out.println("##########################################");
+        System.out.println("# help                                   #");
+        System.out.println("# add rectangle x y width height color   #");
+        System.out.println("# add circle x y radius color            #");
+        System.out.println("# add square x y side color              #");
+        System.out.println("# show                                   #");
+        System.out.println("# stop                                   #");
+        System.out.println("# clear                                  #");
+        System.out.println("##########################################");
     }
 
     /**
      * Test parameter for square and circle.
-     *
      * @param answer The command.
      * @return The command with checked parameters.
      */
@@ -107,7 +98,6 @@ public class View {
                     Integer.parseInt(answer[2]);
                     Integer.parseInt(answer[3]);
                     Integer.parseInt(answer[4]);
-                    char charAt = answer[5].charAt(0);
                 } catch (NumberFormatException e) {
                     badAnswer = true;
                     System.out.println("You need to put 3 integer and 1 char."
@@ -128,7 +118,6 @@ public class View {
 
     /**
      * Add a square into an asciipaint.
-     *
      * @param command The command to add square.
      */
     public void addSquare(String[] command) {
@@ -143,7 +132,6 @@ public class View {
 
     /**
      * Add a circle into an asciipaint.
-     *
      * @param command The command to add circle.
      */
     public void addCircle(String[] command) {
@@ -157,8 +145,7 @@ public class View {
 
     /**
      * Add a rectangle into an asciipaint.
-     *
-     * @param command The command to add rectangle.
+     * @param answer The value the user will give to make the shape
      */
     public void addRectangle(String[] answer) {
         int numParam = 7, x = 0, y = 0, width = 0, height = 0;
@@ -179,7 +166,7 @@ public class View {
                             + Arrays.toString(answer));
                 }
             } else {
-                System.out.println("Put x y width height and color. [2 3 1 4 r] : ");
+                System.out.println("Put x y height width and color. [2 3 1 4 r] : ");
                 answer = in.nextLine().split(" ");
                 answer[answer.length - 1] = answer[4];
                 answer[answer.length - 2] = answer[3];
@@ -197,7 +184,7 @@ public class View {
      */
     public void insertCommand() {
         Boolean stop = false;
-        String[] command = new String[7];
+        String[] command;
         do {
             System.out.println("Insert command : ");
             command = in.nextLine().split(" ");
@@ -217,6 +204,8 @@ public class View {
                 case "clear":
                     resetAscii();
                     break;
+                default :
+                    throw new IllegalArgumentException("Nothing was selected");
             }
         } while (!stop);
 
@@ -238,6 +227,8 @@ public class View {
             case "circle":
                 addCircle(command);
                 break;
+            default :
+                    throw new IllegalArgumentException("No shape was selected");
         }
     }
 

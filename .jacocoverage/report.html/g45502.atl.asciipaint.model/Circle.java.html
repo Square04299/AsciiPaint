@@ -11,68 +11,100 @@ public class Circle extends ColoredShape {
     private Point center;
     private double raduis;
     
+    /**
+     * Builder of the circle class
+     * @param center X and Y of the circle
+     * @param raduis radius of the circle from the center
+     * @param color Ascii character to make the shape
+     */
     public Circle(Point center, double raduis, char color) {
-<span class="fc" id="L15">        super(color);</span>
-<span class="fc bfc" id="L16" title="All 2 branches covered.">        if (center == null) {</span>
-<span class="fc" id="L17">            throw new NullPointerException();</span>
+<span class="fc" id="L21">        super(color);</span>
+<span class="fc bfc" id="L22" title="All 2 branches covered.">        if (center == null) {</span>
+<span class="fc" id="L23">            throw new NullPointerException();</span>
         }
-<span class="fc" id="L19">        this.center = center;</span>
-<span class="fc" id="L20">        this.raduis = raduis;</span>
-<span class="fc" id="L21">    }</span>
+<span class="fc" id="L25">        this.center = center;</span>
+<span class="fc" id="L26">        this.raduis = raduis;</span>
+<span class="fc" id="L27">    }</span>
     
+    /**
+     * Builder of the circle class with a Point and radius
+     * @param cercle X and Y of the circle
+     * @param raduis radius of the circle from the center
+     */
     public Circle(Point cercle, double raduis) {
-<span class="fc" id="L24">        this(cercle, raduis, '#');</span>
-<span class="fc" id="L25">    }</span>
+<span class="fc" id="L35">        this(cercle, raduis, '#');</span>
+<span class="fc" id="L36">    }</span>
     
+    /**
+     *Builder by default
+     */
     public Circle() {
-<span class="fc" id="L28">        this(new Point(), 0.0, '#');</span>
-<span class="fc" id="L29">    }</span>
+<span class="fc" id="L42">        this(new Point(), 0.0, '#');</span>
+<span class="fc" id="L43">    }</span>
 
+    /**
+     *Getter of center
+     * @return the center of the circle
+     */
     public Point getCenter() {
-<span class="fc" id="L32">        return center;</span>
+<span class="fc" id="L50">        return center;</span>
     }
 
+    /**
+     *Getter of radius
+     * @return the radius of the circle
+     */
     public double getRaduis() {
-<span class="fc" id="L36">        return raduis;</span>
+<span class="fc" id="L58">        return raduis;</span>
     }
 
+    /**
+     *Check if a point is inside the circle
+     * @param p point you will need to check
+     * @return true of the point is inside
+     */
     @Override
     public boolean isInside(Point p) {
-<span class="fc bfc" id="L41" title="All 2 branches covered.">        return (this.center.distanceTo(p) &lt; this.raduis);</span>
+<span class="fc bfc" id="L68" title="All 2 branches covered.">        return (this.center.distanceTo(p) &lt; this.raduis);</span>
     }
 
+    /**
+     *Move the point center to another location
+     * @param dx where to move X
+     * @param dy where to move Y
+     */
     @Override
     public void move(double dx, double dy) {
-<span class="fc" id="L46">        center.move(dx, dy);</span>
-<span class="fc" id="L47">    }</span>
+<span class="fc" id="L78">        center.move(dx, dy);</span>
+<span class="fc" id="L79">    }</span>
 
     @Override
     public int hashCode() {
-<span class="fc" id="L51">        int hash = 5;</span>
-<span class="fc" id="L52">        hash = 97 * hash + Objects.hashCode(this.center);</span>
-<span class="fc" id="L53">        hash = 97 * hash + (int) (Double.doubleToLongBits(this.raduis) ^ (Double.doubleToLongBits(this.raduis) &gt;&gt;&gt; 32));</span>
-<span class="fc" id="L54">        return hash;</span>
+<span class="fc" id="L83">        int hash = 5;</span>
+<span class="fc" id="L84">        hash = 97 * hash + Objects.hashCode(this.center);</span>
+<span class="fc" id="L85">        hash = 97 * hash + (int) (Double.doubleToLongBits(this.raduis) ^ (Double.doubleToLongBits(this.raduis) &gt;&gt;&gt; 32));</span>
+<span class="fc" id="L86">        return hash;</span>
     }
 
     @Override
     public boolean equals(Object obj) {
-<span class="pc bpc" id="L59" title="1 of 2 branches missed.">        if (this == obj) {</span>
-<span class="nc" id="L60">            return true;</span>
+<span class="pc bpc" id="L91" title="1 of 2 branches missed.">        if (this == obj) {</span>
+<span class="nc" id="L92">            return true;</span>
         }
-<span class="pc bpc" id="L62" title="1 of 2 branches missed.">        if (obj == null) {</span>
-<span class="nc" id="L63">            return false;</span>
+<span class="pc bpc" id="L94" title="1 of 2 branches missed.">        if (obj == null) {</span>
+<span class="nc" id="L95">            return false;</span>
         }
-<span class="pc bpc" id="L65" title="1 of 2 branches missed.">        if (getClass() != obj.getClass()) {</span>
-<span class="nc" id="L66">            return false;</span>
+<span class="pc bpc" id="L97" title="1 of 2 branches missed.">        if (getClass() != obj.getClass()) {</span>
+<span class="nc" id="L98">            return false;</span>
         }
-<span class="fc" id="L68">        final Circle other = (Circle) obj;</span>
-<span class="pc bpc" id="L69" title="1 of 2 branches missed.">        if (Double.doubleToLongBits(this.raduis) != Double.doubleToLongBits(other.raduis)) {</span>
-<span class="nc" id="L70">            return false;</span>
+<span class="fc" id="L100">        final Circle other = (Circle) obj;</span>
+<span class="pc bpc" id="L101" title="1 of 2 branches missed.">        if (Double.doubleToLongBits(this.raduis) != Double.doubleToLongBits(other.raduis)) {</span>
+<span class="nc" id="L102">            return false;</span>
         }
-<span class="pc bpc" id="L72" title="1 of 2 branches missed.">        if (!Objects.equals(this.center, other.center)) {</span>
-<span class="nc" id="L73">            return false;</span>
+<span class="pc bpc" id="L104" title="1 of 2 branches missed.">        if (!Objects.equals(this.center, other.center)) {</span>
+<span class="nc" id="L105">            return false;</span>
         }
-<span class="fc" id="L75">        return true;</span>
+<span class="fc" id="L107">        return true;</span>
     }
 
     

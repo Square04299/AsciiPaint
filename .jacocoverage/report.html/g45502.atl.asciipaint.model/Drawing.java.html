@@ -11,40 +11,69 @@ public class Drawing {
     private List&lt;Shape&gt; shapes;
     private int height;
     private int width;
+    
+    /**
+     * Builder of drawing with attribute
+     * @param height height of the canvas to draw
+     * @param width width of the canvas to draw
+     */
+<span class="fc" id="L20">    public Drawing(int height, int width) {</span>
+<span class="fc" id="L21">        this.shapes = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L22">        this.height = height;</span>
+<span class="fc" id="L23">        this.width = width;</span>
+<span class="fc" id="L24">    }</span>
 
-<span class="fc" id="L15">    public Drawing(int height, int width) {</span>
-<span class="fc" id="L16">        this.shapes = new ArrayList&lt;&gt;();</span>
-<span class="fc" id="L17">        this.height = height;</span>
-<span class="fc" id="L18">        this.width = width;</span>
-<span class="fc" id="L19">    }</span>
-
+    /**
+     * Builder of drawing default
+     */
     public Drawing() {
-<span class="fc" id="L22">        this(0,0);</span>
-<span class="fc" id="L23">    }</span>
+<span class="fc" id="L30">        this(0,0);</span>
+<span class="fc" id="L31">    }</span>
 
+    /**
+     * Getter of shapes
+     * @return shapes
+     */
     public List&lt;Shape&gt; getShapes() {
-<span class="fc" id="L26">        return shapes;</span>
+<span class="fc" id="L38">        return shapes;</span>
     }
 
+    /**
+     * Getter of height
+     * @return height of the canvas
+     */
     public int getHeight() {
-<span class="fc" id="L30">        return height;</span>
+<span class="fc" id="L46">        return height;</span>
     }
 
+    /**
+     * Getter of width
+     * @return width of the canvas
+     */
     public int getWidth() {
-<span class="fc" id="L34">        return width;</span>
+<span class="fc" id="L54">        return width;</span>
     }
     
+    /**
+     * Add a new shape to the drawing canvas
+     * @param shape new shape to add
+     */
     public void addShape(Shape shape){
-<span class="fc" id="L38">        shapes.add(shape);</span>
-<span class="fc" id="L39">    }</span>
+<span class="fc" id="L62">        shapes.add(shape);</span>
+<span class="fc" id="L63">    }</span>
     
+    /**
+     * Will go thought the canvas to see if the point if inside the shape
+     * @param p point the check if he is inside the shape
+     * @return true if you can add the point to the shape
+     */
     public Shape getShapeAt(Point p){
-<span class="pc bpc" id="L42" title="1 of 2 branches missed.">        for (int i = 0; i &lt; shapes.size(); i++) {</span>
-<span class="fc bfc" id="L43" title="All 2 branches covered.">            if (shapes.get(i).isInside(p)) {</span>
-<span class="fc" id="L44">                return shapes.get(i);</span>
+<span class="pc bpc" id="L71" title="1 of 2 branches missed.">        for (int i = 0; i &lt; shapes.size(); i++) {</span>
+<span class="fc bfc" id="L72" title="All 2 branches covered.">            if (shapes.get(i).isInside(p)) {</span>
+<span class="fc" id="L73">                return shapes.get(i);</span>
             }
         }
-<span class="nc" id="L47">        throw new IllegalArgumentException();</span>
+<span class="nc" id="L76">        throw new IllegalArgumentException();</span>
     }
     
     

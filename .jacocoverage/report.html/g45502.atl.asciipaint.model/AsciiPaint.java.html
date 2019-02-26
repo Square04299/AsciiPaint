@@ -6,14 +6,23 @@
  */
 public class AsciiPaint {
     private final Drawing drawing;
-
-<span class="fc" id="L10">    public AsciiPaint(int width, int height) {</span>
-<span class="fc" id="L11">        drawing = new Drawing(width, height);</span>
-<span class="fc" id="L12">    }</span>
     
-<span class="fc" id="L14">    public AsciiPaint() {</span>
-<span class="fc" id="L15">        drawing = new Drawing(0, 0);</span>
-<span class="fc" id="L16">    }</span>
+    /**
+     *
+     * @param width width of the canvas, where you will be drawing your shapes
+     * @param height height of the canvas, where you will be drawing your shapes
+     */
+<span class="fc" id="L15">    public AsciiPaint(int width, int height) {</span>
+<span class="fc" id="L16">        drawing = new Drawing(width, height);</span>
+<span class="fc" id="L17">    }</span>
+    
+    /**
+     *Builder of the AsciiPaint class with no attributs given
+     * will initialize the dimension of the canvas by 0(height) 0(width)
+     */
+<span class="fc" id="L23">    public AsciiPaint() {</span>
+<span class="fc" id="L24">        drawing = new Drawing(0, 0);</span>
+<span class="fc" id="L25">    }</span>
     
     /**
      * Create a circle with a center a radius and a color.
@@ -24,17 +33,17 @@ public class AsciiPaint {
      * @param color Color of the circle.
      */
     public void newCircle(int x, int y, int radius, char color) {
-<span class="pc bpc" id="L27" title="1 of 4 branches missed.">        if ((x + radius) &lt;= drawing.getWidth() &amp;&amp; (x - radius) &gt;= 0</span>
-<span class="pc bpc" id="L28" title="2 of 4 branches missed.">                &amp;&amp; (y + radius) &lt;= drawing.getHeight() &amp;&amp; (y - radius) &gt;= 0) {</span>
-<span class="fc" id="L29">            drawing.addShape(new Circle(new Point(x, y), radius, color));</span>
+<span class="pc bpc" id="L36" title="1 of 4 branches missed.">        if ((x + radius) &lt;= drawing.getWidth() &amp;&amp; (x - radius) &gt;= 0</span>
+<span class="pc bpc" id="L37" title="2 of 4 branches missed.">                &amp;&amp; (y + radius) &lt;= drawing.getHeight() &amp;&amp; (y - radius) &gt;= 0) {</span>
+<span class="fc" id="L38">            drawing.addShape(new Circle(new Point(x, y), radius, color));</span>
         } else {
-<span class="fc" id="L31">            throw new IllegalArgumentException(&quot;Your Circle isn't in the drawing.&quot;</span>
+<span class="fc" id="L40">            throw new IllegalArgumentException(&quot;Your Circle isn't in the drawing.&quot;</span>
                     + &quot; Circle = &quot;
                     + &quot; Center x : &quot; + x + &quot; Center Y : &quot; + y + &quot; Radius : &quot; + radius
                     + &quot; Drawing = &quot;
-<span class="fc" id="L35">                    + &quot; Height : &quot; + drawing.getHeight() + &quot; Width : &quot; + drawing.getWidth());</span>
+<span class="fc" id="L44">                    + &quot; Height : &quot; + drawing.getHeight() + &quot; Width : &quot; + drawing.getWidth());</span>
         }
-<span class="fc" id="L37">    }</span>
+<span class="fc" id="L46">    }</span>
 
     /**
      * Create a rectangle with upperleft x and y, height and width of the
@@ -47,20 +56,20 @@ public class AsciiPaint {
      * @param color Color of the rectangle.
      */
     public void newRectangle(int x, int y, int width, int height, char color) {
-<span class="fc" id="L50">        width--;</span>
-<span class="fc" id="L51">        height--;</span>
-<span class="pc bpc" id="L52" title="2 of 6 branches missed.">        if (x &gt;= 0 &amp;&amp; (x + width) &lt; drawing.getWidth()</span>
-<span class="pc bpc" id="L53" title="1 of 2 branches missed.">                &amp;&amp; (y - height) &gt;= 0 &amp;&amp; y &lt; drawing.getHeight()) {</span>
-<span class="fc" id="L54">            drawing.addShape(new Rectangle(new Point(x, y), width, height, color));</span>
+<span class="fc" id="L59">        width--;</span>
+<span class="fc" id="L60">        height--;</span>
+<span class="pc bpc" id="L61" title="2 of 6 branches missed.">        if (x &gt;= 0 &amp;&amp; (x + width) &lt; drawing.getWidth()</span>
+<span class="pc bpc" id="L62" title="1 of 2 branches missed.">                &amp;&amp; (y - height) &gt;= 0 &amp;&amp; y &lt; drawing.getHeight()) {</span>
+<span class="fc" id="L63">            drawing.addShape(new Rectangle(new Point(x, y), width, height, color));</span>
         } else {
-<span class="fc" id="L56">            throw new IllegalArgumentException(&quot;Your Rectangle isn't in the drawing.&quot;</span>
+<span class="fc" id="L65">            throw new IllegalArgumentException(&quot;Your Rectangle isn't in the drawing.&quot;</span>
                     + &quot; Rectangle = &quot;
                     + &quot; Upper left x : &quot; + x + &quot; Upper left Y : &quot; + y
                     + &quot; Width : &quot; + width + &quot; Height : &quot; + height
                     + &quot; Drawing = &quot;
-<span class="fc" id="L61">                    + &quot; Height : &quot; + drawing.getHeight() + &quot; Width : &quot; + drawing.getWidth());</span>
+<span class="fc" id="L70">                    + &quot; Height : &quot; + drawing.getHeight() + &quot; Width : &quot; + drawing.getWidth());</span>
         }
-<span class="fc" id="L63">    }</span>
+<span class="fc" id="L72">    }</span>
 
     /**
      * Create a square with upperleft x and y, side of the square and this
@@ -72,18 +81,18 @@ public class AsciiPaint {
      * @param color Color of the square.
      */
     public void newSquare(int x, int y, int side, char color) {
-<span class="fc" id="L75">        side--;</span>
-<span class="pc bpc" id="L76" title="2 of 6 branches missed.">        if (x &gt;= 0 &amp;&amp; (x + side) &lt; drawing.getWidth()</span>
-<span class="pc bpc" id="L77" title="1 of 2 branches missed.">                &amp;&amp; (y - side) &gt;= 0 &amp;&amp; y &lt; drawing.getHeight()) {</span>
-<span class="fc" id="L78">            drawing.addShape(new Square(new Point(x, y), side, color));</span>
+<span class="fc" id="L84">        side--;</span>
+<span class="pc bpc" id="L85" title="2 of 6 branches missed.">        if (x &gt;= 0 &amp;&amp; (x + side) &lt; drawing.getWidth()</span>
+<span class="pc bpc" id="L86" title="1 of 2 branches missed.">                &amp;&amp; (y - side) &gt;= 0 &amp;&amp; y &lt; drawing.getHeight()) {</span>
+<span class="fc" id="L87">            drawing.addShape(new Square(new Point(x, y), side, color));</span>
         } else {
-<span class="fc" id="L80">            throw new IllegalArgumentException(&quot;Your Square isn't in the drawing.&quot;</span>
+<span class="fc" id="L89">            throw new IllegalArgumentException(&quot;Your Square isn't in the drawing.&quot;</span>
                     + &quot; Square = &quot;
                     + &quot; Upper left x : &quot; + x + &quot; Upper left Y : &quot; + y + &quot; Side : &quot; + side
                     + &quot; Drawing = &quot;
-<span class="fc" id="L84">                    + &quot; Height : &quot; + drawing.getHeight() + &quot; Width : &quot; + drawing.getWidth());</span>
+<span class="fc" id="L93">                    + &quot; Height : &quot; + drawing.getHeight() + &quot; Width : &quot; + drawing.getWidth());</span>
         }
-<span class="fc" id="L86">    }</span>
+<span class="fc" id="L95">    }</span>
 
     /**
      * The height value of the asciipaint.
@@ -91,7 +100,7 @@ public class AsciiPaint {
      * @return height value
      */
     public int getHeight() {
-<span class="fc" id="L94">        return drawing.getHeight();</span>
+<span class="fc" id="L103">        return drawing.getHeight();</span>
     }
 
     /**
@@ -100,7 +109,7 @@ public class AsciiPaint {
      * @return width value
      */
     public int getWidth() {
-<span class="fc" id="L103">        return drawing.getWidth();</span>
+<span class="fc" id="L112">        return drawing.getWidth();</span>
     }
 
     /**
@@ -111,7 +120,7 @@ public class AsciiPaint {
      * @return The color of the shape.
      */
     public char getColorAt(int x, int y) {
-<span class="fc" id="L114">        return drawing.getShapeAt(new Point(x, y)).getColor();</span>
+<span class="fc" id="L123">        return drawing.getShapeAt(new Point(x, y)).getColor();</span>
     }
 
     /**
@@ -121,8 +130,8 @@ public class AsciiPaint {
      * @param y Y value of the point.
      */
     public void removeShapeAt(int x, int y) {
-<span class="nc" id="L124">        drawing.getShapes().remove(drawing.getShapeAt(new Point(x, y)));</span>
-<span class="nc" id="L125">    }</span>
+<span class="nc" id="L133">        drawing.getShapes().remove(drawing.getShapeAt(new Point(x, y)));</span>
+<span class="nc" id="L134">    }</span>
 
     /**
      * Move a shape where the point is inside.
@@ -133,7 +142,7 @@ public class AsciiPaint {
      * @param dy Change Y value.
      */
     public void moveShapeAt(int x, int y, int dx, int dy) {
-<span class="fc" id="L136">        drawing.getShapeAt(new Point(x, y)).move(dx, dy);</span>
-<span class="fc" id="L137">    }</span>
+<span class="fc" id="L145">        drawing.getShapeAt(new Point(x, y)).move(dx, dy);</span>
+<span class="fc" id="L146">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

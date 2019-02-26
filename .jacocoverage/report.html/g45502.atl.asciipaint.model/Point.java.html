@@ -9,78 +9,104 @@ import static java.lang.Math.*;
 public class Point {
     private double x;
     private double y;
-    
+ 
+    /**
+     * Builder of point default
+     */
     public Point(){
-<span class="fc" id="L14">        this(0,0);</span>
-<span class="fc" id="L15">    }</span>
-<span class="fc" id="L16">    public Point(double x, double y) {</span>
-<span class="fc" id="L17">        this.x = x;</span>
-<span class="fc" id="L18">        this.y = y;</span>
-<span class="fc" id="L19">    }</span>
+<span class="fc" id="L17">        this(0,0);</span>
+<span class="fc" id="L18">    }</span>
+
+    /**
+     * Builder of point
+     * @param x
+     * @param y
+     */
+<span class="fc" id="L25">    public Point(double x, double y) {</span>
+<span class="fc" id="L26">        this.x = x;</span>
+<span class="fc" id="L27">        this.y = y;</span>
+<span class="fc" id="L28">    }</span>
     
-<span class="fc" id="L21">    public Point(Point p){</span>
-<span class="pc bpc" id="L22" title="1 of 2 branches missed.">        if(p == null){</span>
-<span class="nc" id="L23">            throw new NullPointerException();</span>
+    /**
+     * Builder of point with a point
+     * @param p
+     */
+<span class="fc" id="L34">    public Point(Point p){</span>
+<span class="pc bpc" id="L35" title="1 of 2 branches missed.">        if(p == null){</span>
+<span class="nc" id="L36">            throw new NullPointerException();</span>
         }
-<span class="fc" id="L25">        this.x = p.x;</span>
-<span class="fc" id="L26">        this.y = p.y;</span>
-<span class="fc" id="L27">    }</span>
-
-    public double getX() {
-<span class="fc" id="L30">        return x;</span>
-    }
-
-    public double getY() {
-<span class="fc" id="L34">        return y;</span>
-    }
-    
-    void move(double dx, double dy){
-<span class="fc" id="L38">        this.x += dx;</span>
-<span class="fc" id="L39">        this.y += dy;</span>
+<span class="fc" id="L38">        this.x = p.x;</span>
+<span class="fc" id="L39">        this.y = p.y;</span>
 <span class="fc" id="L40">    }</span>
+
+    /**
+     * Getter of x
+     * @return x
+     */
+    public double getX() {
+<span class="fc" id="L47">        return x;</span>
+    }
+
+    /**
+     * Getter of y
+     * @return y
+     */
+    public double getY() {
+<span class="fc" id="L55">        return y;</span>
+    }
     
+    /**
+     * Move the point to a new coordination
+     * @param dx x to add to the current x
+     * @param dy y to add to the current y
+     */
+    void move(double dx, double dy){
+<span class="fc" id="L64">        this.x += dx;</span>
+<span class="fc" id="L65">        this.y += dy;</span>
+<span class="fc" id="L66">    }</span>
+    
+    /**
+     * Calculate the distance between to point
+     * @param other the other point
+     * @return the distance between other and the point
+     */
     double distanceTo(Point other){
-<span class="fc bfc" id="L43" title="All 2 branches covered.">        if (other == null) {</span>
-<span class="fc" id="L44">            throw new NullPointerException(&quot;The point given is null&quot;);</span>
+<span class="fc bfc" id="L74" title="All 2 branches covered.">        if (other == null) {</span>
+<span class="fc" id="L75">            throw new NullPointerException(&quot;The point given is null&quot;);</span>
         }
-<span class="fc" id="L46">        return hypot(this.x - other.x, this.y - other.y);</span>
+<span class="fc" id="L77">        return hypot(this.x - other.x, this.y - other.y);</span>
     }
 
     @Override
     public String toString() {
-<span class="fc" id="L51">        return &quot;{ &quot;+x+ &quot; , &quot; +y+ &quot; }&quot;;</span>
+<span class="fc" id="L82">        return &quot;{ &quot;+x+ &quot; , &quot; +y+ &quot; }&quot;;</span>
     }
     
-    
-
     @Override
     public int hashCode() {
-<span class="fc" id="L58">        int hash = 3;</span>
-<span class="fc" id="L59">        return hash;</span>
+<span class="fc" id="L87">        int hash = 3;</span>
+<span class="fc" id="L88">        return hash;</span>
     }
 
     @Override
     public boolean equals(Object obj) {
-<span class="pc bpc" id="L64" title="1 of 2 branches missed.">        if (this == obj) {</span>
-<span class="nc" id="L65">            return true;</span>
+<span class="pc bpc" id="L93" title="1 of 2 branches missed.">        if (this == obj) {</span>
+<span class="nc" id="L94">            return true;</span>
         }
-<span class="pc bpc" id="L67" title="1 of 2 branches missed.">        if (obj == null) {</span>
-<span class="nc" id="L68">            return false;</span>
+<span class="pc bpc" id="L96" title="1 of 2 branches missed.">        if (obj == null) {</span>
+<span class="nc" id="L97">            return false;</span>
         }
-<span class="pc bpc" id="L70" title="1 of 2 branches missed.">        if (getClass() != obj.getClass()) {</span>
-<span class="nc" id="L71">            return false;</span>
+<span class="pc bpc" id="L99" title="1 of 2 branches missed.">        if (getClass() != obj.getClass()) {</span>
+<span class="nc" id="L100">            return false;</span>
         }
-<span class="fc" id="L73">        final Point other = (Point) obj;</span>
-<span class="pc bpc" id="L74" title="1 of 2 branches missed.">        if (Double.doubleToLongBits(this.x) != Double.doubleToLongBits(other.x)) {</span>
-<span class="nc" id="L75">            return false;</span>
+<span class="fc" id="L102">        final Point other = (Point) obj;</span>
+<span class="pc bpc" id="L103" title="1 of 2 branches missed.">        if (Double.doubleToLongBits(this.x) != Double.doubleToLongBits(other.x)) {</span>
+<span class="nc" id="L104">            return false;</span>
         }
-<span class="pc bpc" id="L77" title="1 of 2 branches missed.">        if (Double.doubleToLongBits(this.y) != Double.doubleToLongBits(other.y)) {</span>
-<span class="nc" id="L78">            return false;</span>
+<span class="pc bpc" id="L106" title="1 of 2 branches missed.">        if (Double.doubleToLongBits(this.y) != Double.doubleToLongBits(other.y)) {</span>
+<span class="nc" id="L107">            return false;</span>
         }
-<span class="fc" id="L80">        return true;</span>
-    }
-    
-    
-    
+<span class="fc" id="L109">        return true;</span>
+    } 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

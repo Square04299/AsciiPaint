@@ -6,11 +6,20 @@ package g45502.atl.asciipaint.model;
  */
 public class AsciiPaint {
     private final Drawing drawing;
-
+    
+    /**
+     *
+     * @param width width of the canvas, where you will be drawing your shapes
+     * @param height height of the canvas, where you will be drawing your shapes
+     */
     public AsciiPaint(int width, int height) {
         drawing = new Drawing(width, height);
     }
     
+    /**
+     *Builder of the AsciiPaint class with no attributs given
+     * will initialize the dimension of the canvas by 0(height) 0(width)
+     */
     public AsciiPaint() {
         drawing = new Drawing(0, 0);
     }

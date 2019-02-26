@@ -11,6 +11,13 @@ public class Rectangle extends ColoredShape {
     double width;
     double height;
 
+    /**
+     * Builder of rectangle with all attribute
+     * @param upperleft point at the to left of the rectangle
+     * @param width length of the width for the rectangle
+     * @param height length of the height for the rectangle
+     * @param color character to fill the shape with
+     */
     public Rectangle(Point upperleft, double width, double height, char color) {
         super(color);
         if (upperleft == null) {
@@ -21,22 +28,43 @@ public class Rectangle extends ColoredShape {
         this.height = height;
     }
 
+    /**
+     *
+     * @param upperleft point at the to left of the rectangle
+     * @param width length of the width for the rectangle
+     * @param height length of the height for the rectangle
+     */
     public Rectangle(Point upperleft, double width, double height) {
         this(upperleft, width, height, '#');
     }
     
+    /**
+     * Builder of rectangle default
+     */
     public Rectangle() {
         this(new Point(), 0.0, 0.0, '#');
     }
 
+    /**
+     * Getter of upperLeft
+     * @return the upperleft point of the rectangle
+     */
     public Point getUpperleft() {
         return upperleft;
     }
 
+    /**
+     * Getter of width
+     * @return width of the shape
+     */
     public double getWidth() {
         return width;
     }
 
+    /**
+     * Getter of height
+     * @return height of the shape
+     */
     public double getHeight() {
         return height;
     }

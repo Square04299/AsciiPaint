@@ -14,6 +14,9 @@ import static org.junit.Assert.*;
  */
 public class RectangleTest {
     
+    /**
+     * Builder of rectangle
+     */
     public RectangleTest() {
     }
 

@@ -9,7 +9,7 @@ public class Controller {
     private final View view;
 
     /**
-     * Create an asciipaint with a view.
+     * Create an sciipaint with a view.
      *
      * @param view The view.
      */
